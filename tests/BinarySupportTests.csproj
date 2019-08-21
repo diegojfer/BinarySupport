@@ -16,6 +16,7 @@
     <Compile Include="src/Size8Tests.cs" />
     <Compile Include="src/Size16Tests.cs" />
     <Compile Include="src/Size32Tests.cs" />
+    <Compile Include="src/Size64Tests.cs" />
   </ItemGroup>
 
   <ItemGroup>
