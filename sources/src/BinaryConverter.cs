@@ -31,5 +31,15 @@ namespace FoolishTech.Support.Binary
 		}
 		public static byte[] WriteUInt8(Byte integer) => new byte[] { integer };
 
+        private static bool ShouldReverseBytes(Endianess endianess) 
+        {
+            if (endianess == Endianess.SystemEndian) return false;
+            if (endianess == Endianess.LittleEndian && BitConverter.IsLittleEndian == false) return true;
+            if (endianess == Endianess.LittleEndian && BitConverter.IsLittleEndian == true) return false;
+            if (endianess == Endianess.BigEndian && BitConverter.IsLittleEndian == false) return false;
+            if (endianess == Endianess.BigEndian && BitConverter.IsLittleEndian == true) return true;
+             
+            throw new ArgumentException(nameof(endianess), $"Endianness should be [{nameof(Endianess.SystemEndian)}, {nameof(Endianess.LittleEndian)} or {nameof(Endianess.BigEndian)}].");
+        }
     }   
 }
