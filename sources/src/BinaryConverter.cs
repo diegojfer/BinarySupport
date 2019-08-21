@@ -4,6 +4,13 @@ namespace FoolishTech.Support.Binary
 {
     public static class BinaryConverter
     {
+        public enum Endianess 
+        {
+            SystemEndian,
+            LittleEndian,
+            BigEndian
+        }
+
 		public static SByte ReadInt8(byte[] buffer) => ReadInt8(new ReadOnlyMemory<byte>(buffer));
 		public static SByte ReadInt8(ReadOnlyMemory<byte> buffer) => ReadInt8(buffer.Span);
 		public static SByte ReadInt8(ReadOnlySpan<byte> buffer)	
