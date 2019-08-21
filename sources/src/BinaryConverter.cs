@@ -87,6 +87,62 @@ namespace FoolishTech.Support.Binary
 			return buffer;
 		}
 
+		public static Int32 ReadInt32(byte[] buffer, Endianess endianess = Endianess.SystemEndian) => ReadInt32(new ReadOnlyMemory<byte>(buffer), endianess);
+		public static Int32 ReadInt32(ReadOnlyMemory<byte> buffer, Endianess endianess = Endianess.SystemEndian) => ReadInt32(buffer.Span, endianess);
+		public static Int32 ReadInt32(ReadOnlySpan<byte> buffer, Endianess endianess = Endianess.SystemEndian)
+		{
+			if (buffer.Length != 4) throw new ArgumentException(nameof(buffer), "Invalid buffer length. The length must be the same of target integer.");
+			
+			if (ShouldReverseBytes(endianess)) {
+				var span = new Span<byte>(new byte[4]);
+				buffer.CopyTo(span);
+				span.Reverse();
+				return BitConverter.ToInt32(span);
+			} else {
+				return BitConverter.ToInt32(buffer);
+			}
+		}
+		public static byte[] WriteInt32(Int32 integer, Endianess endianess = Endianess.SystemEndian) 
+		{
+			byte[] buffer = BitConverter.GetBytes(integer);
+
+			if (ShouldReverseBytes(endianess)) {
+				var span = new Span<byte>(buffer); 
+				span.Reverse();
+				buffer = span.ToArray();
+			}
+			
+			return buffer;
+		}
+
+        public static UInt32 ReadUInt32(byte[] buffer, Endianess endianess = Endianess.SystemEndian) => ReadUInt32(new ReadOnlyMemory<byte>(buffer), endianess);
+		public static UInt32 ReadUInt32(ReadOnlyMemory<byte> buffer, Endianess endianess = Endianess.SystemEndian) => ReadUInt32(buffer.Span, endianess);
+		public static UInt32 ReadUInt32(ReadOnlySpan<byte> buffer, Endianess endianess = Endianess.SystemEndian)
+		{
+			if (buffer.Length != 4) throw new ArgumentException(nameof(buffer), "Invalid buffer length. The length must be the same of target integer.");
+			
+			if (ShouldReverseBytes(endianess)) {
+				var span = new Span<byte>(new byte[4]);
+				buffer.CopyTo(span);
+				span.Reverse();
+				return BitConverter.ToUInt32(span);
+			} else {
+				return BitConverter.ToUInt32(buffer);
+			}
+		}
+		public static byte[] WriteUInt32(UInt32 integer, Endianess endianess = Endianess.SystemEndian) 
+		{
+			byte[] buffer = BitConverter.GetBytes(integer);
+
+			if (ShouldReverseBytes(endianess)) {
+				var span = new Span<byte>(buffer); 
+				span.Reverse();
+				buffer = span.ToArray();
+			}
+			
+			return buffer;
+		}
+
         private static bool ShouldReverseBytes(Endianess endianess) 
         {
             if (endianess == Endianess.SystemEndian) return false;
