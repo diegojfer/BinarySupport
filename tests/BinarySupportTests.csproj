@@ -14,6 +14,7 @@
   
   <ItemGroup>
     <Compile Include="src/Size8Tests.cs" />
+    <Compile Include="src/Size16Tests.cs" />
   </ItemGroup>
 
   <ItemGroup>
