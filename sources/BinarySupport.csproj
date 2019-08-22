@@ -3,6 +3,7 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <RootNamespace>FoolishTech</RootNamespace>
     <EnableDefaultCompileItems>False</EnableDefaultCompileItems>
+    <IsPackable>true</IsPackable>
   </PropertyGroup>
   
   <ItemGroup>
