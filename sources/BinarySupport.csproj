@@ -4,10 +4,21 @@
     <RootNamespace>FoolishTech</RootNamespace>
     <EnableDefaultCompileItems>False</EnableDefaultCompileItems>
     <IsPackable>true</IsPackable>
+	<PackageVersion>0.6.1</PackageVersion>
+	<PackageId>FoolishTech.BinarySupport</PackageId>
+	<Title>Binary Support</Title>
+	<PackageDescription>Utils for parsing Integers from byte array.</PackageDescription>
+	<PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+	<Authors>diegofer</Authors>
+	<PackageTags>binary, support, diegofer, integers, big, little, endian, endianness, parse, read, write, integer, array, bin, hex</PackageTags>
   </PropertyGroup>
   
   <ItemGroup>
     <Compile Include="src/BinaryConverter.cs" />
+  </ItemGroup>
+ 
+  <ItemGroup>
+    <None Include="..\LICENSE.md" Pack="true" PackagePath="$(PackageLicenseFile)"/>
   </ItemGroup>
 
   <ItemGroup>
