@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <RootNamespace>FoolishTech</RootNamespace>
+    <EnableDefaultCompileItems>False</EnableDefaultCompileItems>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="nunit" Version="3.11.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.11.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Include="src/Size8Tests.cs" />
+    <Compile Include="src/Size16Tests.cs" />
+    <Compile Include="src/Size32Tests.cs" />
+    <Compile Include="src/Size64Tests.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove=".DS_Store" />
+    <None Remove=".gitkeep" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\sources\BinarySupport.csproj" />
+  </ItemGroup>
+</Project>
